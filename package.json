@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/matatsuna/imageSearch/issues"
   },
-  "homepage": "https://github.com/matatsuna/imageSearch#readme"
+  "homepage": "https://github.com/matatsuna/imageSearch#readme",
+  "devDependencies": {
+    "webpack": "^4.0.1"
+  }
 }
