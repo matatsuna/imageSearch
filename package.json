@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack app.js bundle.js"
+    "build": "webpack --module-bind 'js=babel-loader' --module-bind 'jsx=babel-loader' --mode production",
+    "start": "node ./dist/main.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,11 @@
   },
   "homepage": "https://github.com/matatsuna/imageSearch#readme",
   "devDependencies": {
-    "webpack": "^4.0.1"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.10"
   }
 }
