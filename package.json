@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --module-bind 'js=babel-loader' --module-bind 'jsx=babel-loader' --mode production",
-    "start": "babel-node ./index.js --presets es2015"
+    "start": "node ./node_modules/babel-cli/bin/babel-node.js index.js"
   },
   "repository": {
     "type": "git",
