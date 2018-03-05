@@ -7,20 +7,27 @@ class imageSearch {
         const app = express();
 
         app.get('/', (req, res) => {
-            this.fetchYahooImg()
-                .then(text => this.parseYahooImg(text))
-                .then((val) => {
-                    let json = JSON.stringify(val);
-                    res.send(json);
-                });
+            res.header("Content-Type", "application/json; charset=utf-8");
+            let query = req.query.text;
+            if (query === undefined) {
+                res.send(JSON.stringify([]));
+            }
+            else {
+                this.fetchYahooImg(query)
+                    .then(text => this.parseYahooImg(text))
+                    .then((val) => {
+                        let json = JSON.stringify(val);
+                        res.send(json);
+                    });
+            }
         })
 
         app.listen(5050);
         console.log("server 5050 started");
     }
-    fetchYahooImg() {
+    fetchYahooImg(query) {
         return new Promise((resolve) => {
-            fetch('https://search.yahoo.co.jp/image/search?p=%E5%B7%9D%E5%B3%B6%E6%B5%B7%E8%8D%B7')
+            fetch('https://search.yahoo.co.jp/image/search?p=' + encodeURIComponent(query))
                 .then(e => e.text())
                 .then((text) => {
                     resolve(text);
