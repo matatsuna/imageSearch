@@ -22,7 +22,7 @@ class imageSearch {
             }
         })
 
-        app.listen(5050);
+        app.listen(80);
         console.log("server 80 started");
     }
     fetchYahooImg(query) {
