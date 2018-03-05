@@ -22,8 +22,8 @@ class imageSearch {
             }
         })
 
-        app.listen(80);
-        console.log("server 80 started");
+        app.listen(5050);
+        console.log("server 5050 started");
     }
     fetchYahooImg(query) {
         return new Promise((resolve) => {
