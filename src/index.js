@@ -2,8 +2,6 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
-
-
 class imageSearch {
     constructor() {
         const app = express();
@@ -12,9 +10,9 @@ class imageSearch {
             this.fetchYahooImg()
                 .then(text => this.parseYahooImg(text))
                 .then((val) => {
-                    console.log(val);
+                    let json = JSON.stringify(val);
+                    res.send(json);
                 });
-            res.send('Hello World');
         })
 
         app.listen(5050);
@@ -32,8 +30,11 @@ class imageSearch {
     parseYahooImg(text) {
         return new Promise((resolve) => {
             const $ = cheerio.load(text);
-            let val = $('title').text();
-            resolve(val);
+            let urls = [];
+            $('#gridlist a').map((i, element) => {
+                urls.push(element.attribs.href);
+            });
+            resolve(urls);
         });
 
     }
