@@ -12,8 +12,8 @@ app.get('/', (req, res) => {
         res.send(JSON.stringify([]));
     }
     else {
-        this.fetchYahooImg(query)
-            .then(text => this.parseYahooImg(text))
+        fetchYahooImg(query)
+            .then(text => parseYahooImg(text))
             .then((val) => {
                 let json = JSON.stringify(val);
                 res.send(json);
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, function () {
-    console.log('Example app listening on port 5070!');
+    console.log('Example app listening on port ' + PORT.toString());
 })
 
 function fetchYahooImg(query) {
