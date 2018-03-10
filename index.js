@@ -22,8 +22,9 @@ class imageSearch {
             }
         })
 
-        app.listen(5050);
-        console.log("server 5050 started");
+        app.listen(5070, function () {
+            console.log('Example app listening on port 5070!');
+        })
     }
     fetchYahooImg(query) {
         return new Promise((resolve) => {
