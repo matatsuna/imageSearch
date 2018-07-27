@@ -38,8 +38,9 @@ function parseYahooImg(text) {
     return new Promise((resolve) => {
         const $ = cheerio.load(text);
         let urls = [];
-        $('#gridlist a').map((i, element) => {
-            urls.push(element.attribs.href);
+        $('#gridlist img').map((i, element) => {
+            let url = element.attribs.rel.split('|')[0];
+            urls.push(url);
         });
         resolve(urls);
     });
